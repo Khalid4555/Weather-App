@@ -5,13 +5,28 @@ import LocationDetails from "./LocationDetails";
 import data from "../data/forecast.json";
 import ForecastSummary from "./ForecastSummary";
 import ForecastSummaries from "./ForecastSummaries";
+import ForecastDetails from "./ForecastDetails";
+import { useState } from "react";
 
-const App = ({ location, forecasts }) => (
-  <div className="weather-app">
-    <LocationDetails city={location.city} country={location.country} />
-    <ForecastSummaries forecasts={forecasts} />
-  </div>
-);
+const App = ({ location, forecasts }) => {
+  const [selectedDate, setSelectedDate] = useState(forecasts[0].date);
+  const selectedForecast = forecasts.find(
+    (forecast) => forecast.date === selectedDate
+  );
+  const handleForecastSelect = (date) => {
+    setSelectedDate(date);
+  };
+  return (
+    <div className="weather-app">
+      <LocationDetails city={location.city} country={location.country} />
+      <ForecastSummaries
+        forecasts={forecasts}
+        onForecastSelect={handleForecastSelect}
+      />
+      <ForecastDetails forecasts={selectedForecast} />
+    </div>
+  );
+};
 
 App.propTypes = {
   forecasts: PropTypes.arrayOf(
