@@ -24,6 +24,7 @@ describe("ForecastSummary", () => {
         onSelect={validProps.onSelect}
       />
     );
+    expect(asFragment()).toMatchSnapshot();
 
     expect(getByText("Thu 1st Jan")).toHaveClass("forecast-summary__date");
     expect(getByText("Stub description")).toHaveClass(

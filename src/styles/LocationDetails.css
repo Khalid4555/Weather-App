@@ -1,0 +1,18 @@
+.location-details-container {
+  display: flex;
+  justify-content: center;
+}
+
+.location-details-heading2 {
+  margin-left: auto;
+  padding-right: 30px;
+}
+
+.location-details-heading1 {
+  margin-right: auto;
+  padding-left: 5px;
+}
+
+img {
+  height: 90px;
+}

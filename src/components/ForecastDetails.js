@@ -1,18 +1,21 @@
 import React from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
+import "../styles/ForecastDetails.css";
 
 const ForecastDetails = ({ forecasts }) => {
   const { date, temperature, humidity, wind } = forecasts;
   return (
-    <div>
-      <b>{moment(date).format("ddd Do MMM")}</b>
-      <h6>Max Tempreture: {temperature.max}</h6>
-      <h6>Min Tempreture:{temperature.min}</h6>
-      <h6>Humidity: {humidity}</h6>
-      <h6>
-        Wind Speend:{wind.speed},{wind.direction}
-      </h6>
+    <div className="forecast-details-container">
+      <h2>
+        <b>{moment(date).format("ddd Do MMM")}</b>
+      </h2>
+      <p>Max Tempreture: {temperature.max}</p>
+      <p>Min Tempreture:{temperature.min}</p>
+      <p>Humidity: {humidity}</p>
+      <p>
+        Wind Speed:{wind.speed},{wind.direction}
+      </p>
     </div>
   );
 };
